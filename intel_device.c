@@ -203,7 +203,7 @@ int intel_gpu_info_from_device_id(uint16_t device_id, struct intel_gpu_info *i91
 	for (i = 0; i < ARRAY_SIZE(adlp_ids); i++)
 		if (adlp_ids[i] == device_id) {
 			i915->graphics_version = 12;
-			i915->sub_version = 5;
+			i915->sub_version = 0;
 			i915->is_xelpd = true;
 			return 0;
 		}
