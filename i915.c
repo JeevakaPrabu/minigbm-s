@@ -304,8 +304,9 @@ static int i915_add_combinations(struct driver *drv)
 
 	if (i915_has_tile4(i915)) {
 		// in dual gpu case, only alloc x-tiling for dgpu for render
-		if ((drv->gpu_grp_type & GPU_GRP_TYPE_HAS_INTEL_IGPU_BIT) ||
-		    (drv->gpu_grp_type & GPU_GRP_TYPE_HAS_VIRTIO_GPU_BLOB_BIT)) {
+		if (((drv->gpu_grp_type & GPU_GRP_TYPE_HAS_INTEL_IGPU_BIT) ||
+		    (drv->gpu_grp_type & GPU_GRP_TYPE_HAS_VIRTIO_GPU_BLOB_BIT))
+			&& (GEN_VERSION_X10(i915) == 125)) {
 			return 0;
 		}
 
